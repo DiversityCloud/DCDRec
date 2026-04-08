@@ -107,10 +107,10 @@ log/{dataset}_best.pt
 
 The official repositories of the main compared methods are listed below.
 
-1. **SASRec**: *Self-Attentive Sequential Recommendation* (ICDM 2018).  
+1. **SASRec**: *Self-Attentive Sequential Recommendation*.  
    Code: [https://github.com/kang205/SASRec](https://github.com/kang205/SASRec)
 
-2. **ACVAE**  
+2. **ACVAE** : *Adversarial and Contrastive Variational Autoencoder for Sequential Recommendation* 
    Code: [https://github.com/ACVAE/ACVAE-PyTorch](https://github.com/ACVAE/ACVAE-PyTorch)
 
 3. **BERT4Rec**: *Sequential Recommendation with Bidirectional Encoder Representations from Transformer*.  
@@ -122,13 +122,13 @@ The official repositories of the main compared methods are listed below.
 5. **DreamRec**: *Generate What You Prefer: Reshaping Sequential Recommendation via Guided Diffusion*.  
    Code: [https://github.com/yangzhengyi98/dreamrec](https://github.com/yangzhengyi98/dreamrec)
 
-6. **DiQDiff**: *Distinguished Quantized Guidance for Diffusion-based Sequence Recommendation* (WWW 2025).  
+6. **DiQDiff**: *Distinguished Quantized Guidance for Diffusion-based Sequence Recommendation*.  
    Code: [https://github.com/maowenyu-11/DiQDiff](https://github.com/maowenyu-11/DiQDiff)
 
-7. **InDiRec**: *Intent-aware Diffusion with Contrastive Learning for Sequential Recommendation* (SIGIR 2025).  
+7. **InDiRec**: *Intent-aware Diffusion with Contrastive Learning for Sequential Recommendation*.  
    Code: [https://github.com/qyp9909/InDiRec](https://github.com/qyp9909/InDiRec)
 
-8. **LLM-ESR**: *Large Language Models Enhancement for Long-tailed Sequential Recommendation* (NeurIPS 2024).  
+8. **LLM-ESR**: *Large Language Models Enhancement for Long-tailed Sequential Recommendation*.  
    Code: [https://github.com/liuqidong07/LLM-ESR](https://github.com/liuqidong07/LLM-ESR)
    
 ## Datasets
