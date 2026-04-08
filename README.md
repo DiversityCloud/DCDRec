@@ -1,62 +1,124 @@
->📋 Collaborative-Guided Diffusion for Sequential
-Recommendation 
+# DCDRec: Collaborative-Guided Diffusion for Sequential Recommendation 
 
-This repository is the official implementation of [Collaborative-Guided Diffusion for Sequential
-Recommendation]. 
+This repository provides the official implementation of DCDRec, a diffusion-based sequential recommendation model that incorporates dual collaborative signals for both target representation learning and conditional denoising.
 
-###  Framework:
-This is the framework of proposed DCDRec model:
-![performance](figs/Framework.png)
+## Overview
 
-## Abstract
-Sequential recommendation aims to predict the next item that aligns with user preferences based on their historical interaction sequence. Traditional sequence recommendation methods can be seen as understanding-based approaches, where the next relevant item is determined by analyzing user past interactions and rating patterns. Recently, diffusion-based models have emerged as a promising paradigm, focusing on learning data distributions rather than explicitly mining sequential patterns. However, existing diffusion-based methods still face two limitations. Firstly, they often map discrete target items into continuous spaces through transformations, failing to accurately model target items in a way that reflects future user preferences. Secondly, existing conditionally guided diffusion models rely heavily on explicit conditions derived from intra-sequence patterns while neglecting inter-sequence collaborative signals, which hinders the robustness of user preference modeling. To bridge the gap between collaborative signals and diffusion models, we propose DCDRec, a Dual Collaborative Signal-Guided Diffusion  Recommendation model. Specifically, for target item representation, we employ a cross-attention based encoder to obtain context-aware target item embeddings. For conditional guidance modeling, we incorporate social homophily theory and item-item affinity into the conditional generation process, introducing a dual collaborative signal-guided denoising mechanism to generate new items. Extensive experiments demonstrate the effectiveness of DCDRec and its superiority over state-of-the-art methods.
+Sequential recommendation aims to predict the next item a user is likely to interact with based on historical behavior sequences. While recent diffusion-based recommendation models have shown promising generative capability, most existing methods still suffer from two limitations. First, they often transform discrete target items into continuous representations in a way that may not faithfully reflect future user preferences. Second, their conditional guidance is mainly derived from intra-sequence patterns, while inter-sequence collaborative signals are largely underexplored.
 
-## Code Structures
+To address these issues, we propose DCDRec a Dual Collaborative Signal-Guided Diffusion Recommendation model. Specifically, DCDRec enhances target item representation through a cross-attention based encoder and introduces a dual collaborative signal-guided denoising mechanism by integrating user-side and item-side collaborative information into the conditional generation process.
+
+## Framework
+
+![DCDRec Framework](figs/Framework.png)
+
+## Highlights
+
+- A diffusion-based sequential recommendation framework with dual collaborative guidance.
+- A cross-attention based encoder for learning context-aware target item representations.
+- A conditional denoising mechanism that incorporates both user-side and item-side collaborative signals.
+
+## Repository Structure
+
+```text
+.
+├── main.py
+├── model.py
+├── trainer.py
+├── utils.py
+├── datasets/
+│   ├── Toys/
+│   │   ├── train_data_date.pkl
+│   │   ├── val_data_date.pkl
+│   │   ├── test_data_date.pkl
+│   │   ├── user_vocab_size_date.pkl
+│   │   └── movie_vocab_size_date.pkl
+│   ├── Music/
+│   ├── Video/
+│   ├── ML1M/
+│   ├── ML10M/
+│   └── Yelp/
+└── figs/
+    └── Framework.png
+```
+
+### File Description
+
+- `main.py`: entry point for training and evaluation
+- `model.py`: implementation of the DCDRec model
+- `trainer.py`: training, validation, and testing procedures
+- `utils.py`: data loading utilities and helper functions
+
+## Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+## Dataset Preparation
 
 ```text
 datasets/
 ├── Toys/
-│   ├── train_data_date.pkl
-│   ├── val_data_date.pkl
-│   ├── test_data_date.pkl
-│   ├── user_vocab_size_date.pkl
-│   └── movie_vocab_size_date.pkl
 ├── Music/
 ├── Video/
 ├── ML1M/
 ├── ML10M/
 └── Yelp/
-
-
-## Requirements
-
-To install requirements:
-
-```setup
-pip install -r requirements.txt
 ```
+
+Each dataset folder should contain:
+
+- train_data_date.pkl
+- val_data_date.pkl
+- test_data_date.pkl
+- user_vocab_size_date.pkl
+- movie_vocab_size_date.pkl
 
 ## Training
 
-To train the model(s) in the paper, run this command:
-
-```train
+```bash
 python main.py --dataset Toys
 ```
 
-## Datasets
-Our experiments are conducted on six benchmark datasets collected from Amazon (Toys, Music, and Video), Movielens (1M and 10M), and Yelp. The detailed statistical properties of these datasets are summarized below.
+Supported datasets:
 
-| Dataset | # Users | # Items | # Interactions | # Ave. length | # Data Sparsity |
+- Toys
+- Music
+- Video
+- ML1M
+- ML10M
+- Yelp
+
+## Output
+
+Logs are saved to:
+
+```
+log/{dataset}.txt
+```
+
+Best model checkpoint:
+
+```
+log/{dataset}_best.pt
+```
+
+## Datasets
+
+| Dataset | Users | Items | Interactions | Avg. Sequence Length | Sparsity |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | Toys | 16362 | 22431 | 376278 | 7.39 | 0.9990 |
 | Music | 9906 | 12381 | 346525 | 14.23 | 0.9971 |
 | Video | 10194 | 32349 | 140928 | 24.68 | 0.9989 |
-| Movielens 1M | 6040 | 3633 | 1000209 | 165.6 | 0.95442 |
-| Movielens 10M | 69878 | 10583 | 10000054 | 143.11 | 0.9865 |
+| ML-1M | 6040 | 3633 | 1000209 | 165.60 | 0.9544 |
+| ML-10M | 69878 | 10583 | 10000054 | 143.11 | 0.9865 |
 | Yelp | 21097 | 20205 | 354764 | 16.82 | 0.9991 |
 
+## License
 
-## Contributing
+MIT License
 
->📋  DCDRec is released under MIT License. The dataset is available for research purposes only.
+## Data Usage
+
+Datasets are provided for research purposes only.
