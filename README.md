@@ -11,17 +11,16 @@ This is the framework of proposed DCDRec model:
 ## Abstract
 Sequential recommendation aims to predict the next item that aligns with user preferences based on their historical interaction sequence. Traditional sequence recommendation methods can be seen as understanding-based approaches, where the next relevant item is determined by analyzing user past interactions and rating patterns. Recently, diffusion-based models have emerged as a promising paradigm, focusing on learning data distributions rather than explicitly mining sequential patterns. However, existing diffusion-based methods still face two limitations. Firstly, they often map discrete target items into continuous spaces through transformations, failing to accurately model target items in a way that reflects future user preferences. Secondly, existing conditionally guided diffusion models rely heavily on explicit conditions derived from intra-sequence patterns while neglecting inter-sequence collaborative signals, which hinders the robustness of user preference modeling. To bridge the gap between collaborative signals and diffusion models, we propose DCDRec, a Dual Collaborative Signal-Guided Diffusion  Recommendation model. Specifically, for target item representation, we employ a cross-attention based encoder to obtain context-aware target item embeddings. For conditional guidance modeling, we incorporate social homophily theory and item-item affinity into the conditional generation process, introducing a dual collaborative signal-guided denoising mechanism to generate new items. Extensive experiments demonstrate the effectiveness of DCDRec and its superiority over state-of-the-art methods.
 
-## Code Structures 
+## Code Structures
 
+```text
 datasets/
-│
 ├── Toys/
 │   ├── train_data_date.pkl
 │   ├── val_data_date.pkl
 │   ├── test_data_date.pkl
 │   ├── user_vocab_size_date.pkl
 │   └── movie_vocab_size_date.pkl
-│
 ├── Music/
 ├── Video/
 ├── ML1M/
